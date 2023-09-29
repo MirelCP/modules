@@ -27,6 +27,7 @@
         'views/menu.xml',
         'views/library_book_view.xml',
         'views/library_author_view.xml',
+        'views/res_users_view_extension.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

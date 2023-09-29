@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_library_book,Access Library Book,model_library_book,base.group_user,1,1,1,1
 access_library_author,Access Library Author,model_library_author,base.group_user,1,1,1,1
+access_library_res_users_extension,Access Res Users Extensin,model_res_users,base.group_user,1,1,1,1

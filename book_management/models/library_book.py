@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 from datetime import datetime, timedelta, date
 
 
@@ -25,3 +25,16 @@ class LibraryBook(models.Model):
                 record.book_age = delta.days // 365
             else:
                 record.book_age = 0
+
+    @api.constrains('isbn')
+    def _check_isbn_unique(self):
+        for record in self:
+            if self.env['library.book'].search_count([('isbn', '=', record.isbn)]) > 1:
+                raise exceptions.ValidationError("ISBN must be unique.")
+
+    @api.constrains('page_count')
+    def _check_page_count_positive(self):
+        for record in self:
+            if record.page_count <= 0:
+                raise exceptions.ValidationError(
+                    "Number of pages must me positive")
